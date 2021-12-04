@@ -83,29 +83,29 @@ function Login() {
       <Button variant="light" onClick = {() =>{
                 window.localStorage.setItem('theme', 'light')
                 window.location.reload()
-            }}><p>{t('Light.1')}</p></Button>
+            }}>{t('Light.1')}</Button>
             <Button variant="dark" onClick = {() =>{
                 window.localStorage.setItem('theme', 'dark')
                 window.location.reload()
-            }}><p>{t('Dark.1')}</p></Button>
+            }}>{t('Dark.1')}</Button>
             </div>
    <Navbar expand="lg" className="navbar">
   <Container fluid>
     <>
       <Button variant="outline-success" onClick={handleShowL}>
-       <p>{t('Login.1')}</p>
+       {t('Login.1')}
       </Button>
       <Button variant="outline-success" onClick={handleShowR}>
-      <p>{t('Register.1')}</p>
+      {t('Register.1')}
       </Button>
       
       <Modal show={showR} onHide={handleCloseR}>
         <Modal.Header closeButton>
-          <Modal.Title>Register page</Modal.Title>
+          <Modal.Title>{t('Register page.1')}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form.Group className="mb-3" controlId="formBasicEmail">
-    <Form.Label>Username</Form.Label>
+    <Form.Label>{t('Username.1')}</Form.Label>
     <Form.Control type="text" placeholder="Enter username" onChange={(e) => {
       setUsernameReg(e.target.value)
      }} />
@@ -114,17 +114,17 @@ function Login() {
   </Form.Group>
 
   <Form.Group className="mb-3" controlId="formBasicPassword">
-    <Form.Label>Password</Form.Label>
+    <Form.Label>{t('Password.1')}</Form.Label>
     <Form.Control type="password" placeholder="Password" onChange={(e) =>
                setPasswordReg(e.target.value)} />
   </Form.Group>
   <Button variant="primary" type="submit" ref={target} onClick={() => {register();setShowP(!showP);}}>
-    Register
+  {t('Register.1')}
   </Button>
   <Overlay target={target.current} show={showP} placement="right">
         {(props) => (
           <Tooltip id="overlay-example" {...props}>
-            Succesful Registration
+            {t('Succesful Registration.1')}
           </Tooltip>
         )}
       </Overlay></Modal.Body>
@@ -133,11 +133,11 @@ function Login() {
       
       <Modal show={showL} onHide={handleCloseL}>
         <Modal.Header closeButton>
-          <Modal.Title>Login page</Modal.Title>
+          <Modal.Title>{t('Login page.1')}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form.Group className="mb-3" controlId="formBasicEmail">
-    <Form.Label>Username</Form.Label>
+    <Form.Label>{t('Username.1')}</Form.Label>
     <Form.Control type="email" placeholder="Enter username" onChange={(e) => {
       setUsername(e.target.value)
      }} />
@@ -146,12 +146,12 @@ function Login() {
   </Form.Group>
 
   <Form.Group className="mb-3" controlId="formBasicPassword">
-    <Form.Label>Password</Form.Label>
+    <Form.Label>{t('Password.1')}</Form.Label>
     <Form.Control type="password" placeholder="Password" onChange={(e) =>
                setPassword(e.target.value)} />
   </Form.Group>
   <Button variant="primary" type="submit" onClick={login}>
-    Login
+  {t('Login.1')}
   </Button></Modal.Body>
     
       </Modal>
@@ -165,11 +165,11 @@ function Login() {
       >
       <Dropdown className="lang">
         <Dropdown.Toggle  variant="primary" id="dropdown-basic">
-            Language
+            {t('Language.1')}
         </Dropdown.Toggle>
         <Dropdown.Menu>
-            <Dropdown.Item href="#/action-1" onClick={()=>handleClick('en')}>English</Dropdown.Item>
-            <Dropdown.Item href="#/action-2" onClick={()=>handleClick('ru')} >Russian</Dropdown.Item>
+            <Dropdown.Item href="#/action-1" onClick={()=>handleClick('en')}>{t('English.1')}</Dropdown.Item>
+            <Dropdown.Item href="#/action-2" onClick={()=>handleClick('ru')}>{t('Russian.1')}</Dropdown.Item>
         </Dropdown.Menu>
         </Dropdown>
       <Form className="d-flex">

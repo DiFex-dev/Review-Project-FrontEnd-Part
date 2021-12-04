@@ -1,18 +1,14 @@
 {
-"Review title:": {
-    "1": "Review title:"
+"Title": {
+    "1": "Title:"
 },
 
-"Review:":{
+"Review":{
     "1": "Review:"
 },
 
 "Submit":{
     "1": "Submit"
-},
-
-"Delete":{
-    "1": "Delete"
 },
 
 "Update":{
@@ -36,5 +32,45 @@
 
 "Dark":{
     "1": "Dark"
+},
+
+"Register page":{
+    "1": "Register page"
+},
+
+"Username":{
+    "1": "Username"
+},
+
+"Password":{
+    "1": "Password"
+},
+
+"Login page":{
+    "1": "Login page"
+},
+
+"Language":{
+    "1": "Language"
+},
+
+"English":{
+    "1": "English"
+},
+
+"Russian":{
+    "1": "Russian"
+},
+
+"Succesful Registration":{
+    "1": "Succesful Registration"
+},
+
+"Add Review!":{
+    "1": "Add Review!"
+},
+
+"Delete":{
+    "1": "Delete"
 }
 }
