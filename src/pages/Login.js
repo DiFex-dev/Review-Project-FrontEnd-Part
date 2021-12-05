@@ -4,7 +4,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
 import Axios from 'axios';
 import { useTranslation } from 'react-i18next';
-
+import AppRouter, { AuthState } from '../components/AppRouter';
+import auth from '../store/auth';
+import authReducer from '../store/auth';
 
 function Login() {
 
@@ -55,11 +57,14 @@ function Login() {
       username: username,
       password: password,
     }).then((response) => {
-
-      if (response.data.message) {
-          setLoginStatus(response.data.message);
+      console.log(response.data.message);
+      console.log(response.data[0]);
+      if (response.data) {
+          setLoginStatus(response.data[0]);
+          authReducer(true)
+          AppRouter()
       } else {
-        
+          console.log("Something went wrong: " + response)
       }
 
     });

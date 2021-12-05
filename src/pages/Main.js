@@ -4,6 +4,8 @@ import { Button, Container, Form, FormControl, Nav, Dropdown, Carousel } from 'r
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
 import { useTranslation } from 'react-i18next';
+import { FaStar } from "react-icons/fa";
+import { BiLike } from "react-icons/bi";
 
 function Main() {
 
@@ -27,11 +29,25 @@ function Main() {
         }
     }, [img])
 
+    // const handleSubmit = (reviewName) => {
+    //     console.log("Review comments " + comment)
+    //     console.log("Review Id " + reviewName)
+    //     Axios.put("http://localhost:3001/api/comment",{
+    //         comment: comment,
+    //         reviewName: reviewName,
+    //     });
+    // }
+
     const { t, i18n } = useTranslation();
 
     function handleClick(lang){
         i18n.changeLanguage(lang);
     }
+
+    const [rating, setRating] = useState(null);
+    const [like, setLikeRating] = useState(null)
+    const [hover, setHover] = useState(null);
+    const [likehover, setLikeHover] = useState(null);
 
     const [reviewName, setReviewName] = useState("");
     const [review, setReview] = useState("");
@@ -62,11 +78,11 @@ function Main() {
         ]);
     };
 
-    const Comments = (reviewName, category) => {
-        console.log("Review comments" + reviewComments)
+    const Comments = (reviewName) => {
+        console.log("Review comments" + reviewName + " " + comment)
         Axios.put("http://localhost:3001/api/comment",{
-            comm: category,
-            name: reviewName,
+            comment: comment,
+            reviewName: reviewName,
         });
         
     }
@@ -135,12 +151,12 @@ function Main() {
         
      <Button variant="success" onClick={() => {submitReview(); sendFile();}}>{t('Submit.1')}</Button>
     
-
+    
     {filtredReview.map((val) =>{
     return(<div className="card">
         <h1>{val.name}</h1>
         <p className="review-text">{val.review}</p>
-                <Carousel>
+                <Carousel className="image">
         <Carousel.Item>
             <img
             className="d-block w-100"
@@ -175,12 +191,49 @@ function Main() {
             <p>{t('Comments.1')}</p>
             </Dropdown.Toggle>
             <Dropdown.Menu>
-            <input type="text" name="ReviewComment" onChange={(e) =>
-                setComment(e.target.value) } />
-                 <Button variant="success" onClick={Comments()}>{t('Submit.1')}</Button>
-                     <p>{val.comment}</p> 
-        </Dropdown.Menu>
+                <input type="text" name="ReviewComment" onChange={(e) => setComment(e.target.value) } /> 
+                <Button variant="primary" onClick={() => {Comments(val.name)}}>{t('Submit.1')}</Button>
+                <p>{val.comment}</p> 
+            </Dropdown.Menu>
         </Dropdown>
+        <div className="grade">
+        <div className="rating">
+        {[...Array(5)].map((star, i) =>{
+            const ratingValue = i + 1;
+            return <label> 
+                <input 
+                type="radio"
+                name="rating" 
+                value={ratingValue}
+                onClick={()=>setRating(ratingValue)} />
+                <FaStar 
+                className="star"
+                color={ratingValue <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
+                onMouseEnter={() => setHover(ratingValue)}
+                onMouseLeave={() => setHover(null)}/> 
+                </label>
+        })}
+        </div>
+        <div className="like_input">
+        {[...Array(1)].map((star, i) =>{
+            const likeValue = i + 1;
+                return <label><input
+                type="radio"
+                name="like_input" 
+                value={likeValue}
+                onClick={()=>setLikeRating(likeValue)} />
+                <BiLike
+                className="like"
+                color={likeValue <= (likehover || like) ? "#ff0000" : ""}
+                onMouseEnter={() => setLikeHover(likeValue)}
+                onMouseLeave={() => setLikeHover(null)}
+                size={100}
+                />
+                </label>
+        })}
+            <p className="like_value">{like}</p>
+            </div>
+            </div>
         </div>);
     })}
     </div>

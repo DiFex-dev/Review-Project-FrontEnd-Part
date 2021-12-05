@@ -11,7 +11,7 @@ import Main from '../pages/Main';
        
        export enum RouteNames{
            LOGIN= '/login',
-           MAIN= '/'
+           MAIN= '/main'
 
        }
 

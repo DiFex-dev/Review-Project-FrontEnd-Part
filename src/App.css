@@ -64,6 +64,41 @@ nav{
   margin-bottom: 50px;
 }
 
+input[type="radio"]{
+  display: none;
+}
+
+.star{
+  cursor: pointer;
+  transition: color 200ms;
+}
+
+.like{
+  cursor: pointer;
+  transition: color 200ms;
+  width: 50px;
+}
+
+.grade{
+  display: flex;
+  margin-top: 40px;
+  margin-left: 18px;
+  justify-content: space-between;
+}
+
+.like_value{
+  margin-top: -30px;
+  font-size: 25px;
+}
+
+.rating{
+ 
+}
+
+.like_input{
+  
+}
+
 .review-text{
   margin: 0px 20px 0px 20px
 }
@@ -125,3 +160,6 @@ nav{
   justify-content: center;
 }
 
+.image{
+  margin-top: 20px;
+}
